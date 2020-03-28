@@ -63,7 +63,7 @@ def delete(id_data):
 def update():
 
     if request.method == 'POST':
-        student_id = request.form['student_id']
+        id_data = request.form['student_id']
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         dob = request.form['dob']
@@ -71,7 +71,7 @@ def update():
         cur = mysql.connection.cursor()
         cur.execute("""
                UPDATE record
-               SET name=%s, email=%s, phone=%s
+               SET first_name=%s, last_name=%s, dob=%s, amount_due=%s
                WHERE student_id=%s
             """, (first_name, last_name, dob, amount_due, id_data))
         flash("Data Updated Successfully")
